@@ -1,6 +1,5 @@
 "use client";
 
-import { env } from "process";
 import { useEffect, useState } from "react";
 
 type IncomingFile = {
@@ -74,8 +73,9 @@ export default function FileTransferApp() {
           // If complete, reconstruct Blob
           if (existing.chunksReceived === totalChunks) {
             // Ignore ts
-            // @ts-ignore
-            const blob = new Blob(existing.receivedChunks, { type: mimeType });
+            const blob = new Blob(existing.receivedChunks as BlobPart[], {
+              type: mimeType,
+            });
             const url = URL.createObjectURL(blob);
             setDownloads((d) => ({
               ...d,
