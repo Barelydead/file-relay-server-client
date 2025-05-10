@@ -24,7 +24,7 @@ export default function FileTransferApp() {
 
   useEffect(() => {
     const ws = new WebSocket(
-      `ws://${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/ws/room-1`,
+      `${process.env.NEXT_PUBLIC_WS_BASE_URL}/ws/room-1`,
     );
 
     ws.onopen = () => {
